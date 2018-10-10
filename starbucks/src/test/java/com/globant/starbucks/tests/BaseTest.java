@@ -23,7 +23,7 @@ public class BaseTest {
 
     @AfterSuite (alwaysRun = true)
     public void afterSuite () {
-        // driver.getDriver().quit();
+        driver.getDriver().quit();
     }
 
     public String getPropertie (String key) {
