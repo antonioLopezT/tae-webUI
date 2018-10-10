@@ -25,4 +25,8 @@ public abstract class BasePage {
         return wait;
     }
 
+    public String getCurrentUrl () {
+        return driver.getCurrentUrl();
+    }
+
 }
