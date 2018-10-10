@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Starbucks suite">
+	<test name="Starbucks test">
+		<classes>
+			<class name="com.globant.starbucks.tests.MenuTest"/>
+		</classes>
+	</test>
+</suite>
