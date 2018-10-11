@@ -19,7 +19,7 @@ public class MenuTest extends BaseTest {
         Assert.assertEquals(options, properties);
     }
 
-    @Test (dataProvider = "coffeeData")
+    @Test (dataProvider = "coffeeProvider")
     public void testPerfectCoffee (Integer coffee) {
         StarbucksHomePage homePage = new StarbucksHomePage(driver.getDriver());
         CoffeeFinderPage coffeeFinderPage = homePage.goToCoffeFinder();
@@ -29,8 +29,8 @@ public class MenuTest extends BaseTest {
         Assert.assertEquals(coffeeFinderPage.getCurrentUrl(), getPropertie("starbucks.url.finder"));
     }
 
-    @DataProvider (name = "coffeeData")
-    public static Object[][] coffeeData () {
+    @DataProvider (name = "coffeeProvider")
+    public static Object[][] coffeeProvider () {
         return new Object[][] { { 0 }, { 1 }, { 2 } };
     }
 }
