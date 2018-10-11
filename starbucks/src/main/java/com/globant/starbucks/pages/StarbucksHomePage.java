@@ -23,9 +23,13 @@ public class StarbucksHomePage extends BasePage {
     @FindBy (linkText = "Find Your Perfect Coffee")
     private WebElement perfectCoffeeLink;
 
+    @FindBy (xpath = "//li[@class='utility_link signin']/child::a")
+    private WebElement singInLink;
+
     public StarbucksHomePage (WebDriver driver) {
         super(driver);
         driver.get(URL);
+        driver.manage().window().maximize();
     }
 
     public List<String> getMenuOptions () {
@@ -45,6 +49,12 @@ public class StarbucksHomePage extends BasePage {
         action.click();
         action.perform();
         return new CoffeeFinderPage(getDriver());
+    }
+
+    public SingInPage goToSingIn () {
+        getWait().until(ExpectedConditions.elementToBeClickable(singInLink));
+        singInLink.click();
+        return new SingInPage(getDriver());
     }
 
 }
