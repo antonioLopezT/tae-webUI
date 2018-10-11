@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public abstract class BasePage {
 
     private static final long WAIT_TIME = 10;
+    private static final long PAUSE_TIME = 3;
 
     private WebDriver driver;
     private WebDriverWait wait;

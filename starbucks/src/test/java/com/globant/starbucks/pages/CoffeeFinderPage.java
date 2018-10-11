@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CoffeeFinderPage extends BasePage {
@@ -55,7 +56,8 @@ public class CoffeeFinderPage extends BasePage {
 
     public void selectFindMyCoffeeButton () {
         getWait().until(ExpectedConditions.elementToBeClickable(findMyCoffeeButton));
-        findMyCoffeeButton.click();
+        Actions actions = new Actions(getDriver());
+        actions.moveToElement(findMyCoffeeButton).click().perform();
     }
 
 }
