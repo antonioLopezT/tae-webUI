@@ -19,10 +19,11 @@ public class AccountPage extends BasePage {
         super(driver);
     }
 
-    public void selectGift () {
+    public CardPage selectGift () {
         getWait().until(ExpectedConditions.elementToBeClickable(giftLink));
         Commons.click(getDriver(), giftLink);
         getWait().until(ExpectedConditions.elementToBeClickable(cardLink));
         Commons.click(getDriver(), cardLink);
+        return new CardPage(getDriver());
     }
 }

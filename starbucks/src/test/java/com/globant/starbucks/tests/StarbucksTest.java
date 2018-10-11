@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.globant.starbucks.pages.AccountPage;
+import com.globant.starbucks.pages.CardPage;
 import com.globant.starbucks.pages.CoffeeFinderPage;
 import com.globant.starbucks.pages.SingInPage;
 import com.globant.starbucks.pages.StarbucksHomePage;
@@ -37,7 +38,12 @@ public class StarbucksTest extends BaseTest {
         SingInPage singInPage = homePage.goToSingIn();
         AccountPage accountPage = singInPage.singIn(getPropertie("starbucks.username"),
                 getPropertie("starbucks.password"));
-        accountPage.selectGift();
+        CardPage cardPage = accountPage.selectGift();
+        cardPage.checkOutCard(getPropertie("starbucks.card.name"), getPropertie("starbucks.card.email"),
+                getPropertie("starbucks.card.message"));
+        Assert.assertEquals(cardPage.getTextSendGift(), getPropertie("starbucks.sendGift"));
+        cardPage.selectPayment();
+        Assert.assertEquals(cardPage.getTextContinue(), getPropertie("starbucks.continue"));
     }
 
     @DataProvider (name = "coffeeProvider")
