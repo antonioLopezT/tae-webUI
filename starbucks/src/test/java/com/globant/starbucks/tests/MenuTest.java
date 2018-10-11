@@ -24,7 +24,7 @@ public class MenuTest extends BaseTest {
         StarbucksHomePage homePage = new StarbucksHomePage(driver.getDriver());
         CoffeeFinderPage coffeeFinderPage = homePage.goToCoffeFinder();
         coffeeFinderPage.findPefectCoffee(coffee);
-        Assert.assertTrue(coffeeFinderPage.isFindMyCoffeeButtonDisplayed());
+        Assert.assertTrue(coffeeFinderPage.isFindMyCoffeeVisible());
         coffeeFinderPage.selectFindMyCoffeeButton();
         Assert.assertEquals(coffeeFinderPage.getCurrentUrl(), getPropertie("starbucks.url.finder"));
     }
