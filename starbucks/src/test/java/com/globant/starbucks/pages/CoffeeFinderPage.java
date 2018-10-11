@@ -5,12 +5,9 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CoffeeFinderPage extends BasePage {
-
-    private WebElement findMyCoffeeButton;
 
     public CoffeeFinderPage (WebDriver driver) {
         super(driver);
@@ -49,15 +46,16 @@ public class CoffeeFinderPage extends BasePage {
     }
 
     public boolean isFindMyCoffeeButtonDisplayed () {
-        findMyCoffeeButton = getDriver().findElement(By.id("find-my-coffee"));
+        WebElement findMyCoffeeButton = getDriver().findElement(By.id("find-my-coffee"));
         getWait().until(ExpectedConditions.visibilityOf(findMyCoffeeButton));
         return findMyCoffeeButton.isDisplayed() && findMyCoffeeButton.isEnabled();
     }
 
     public void selectFindMyCoffeeButton () {
+        WebElement findMyCoffeeButton = getDriver().findElement(By.id("find-my-coffee"));
         getWait().until(ExpectedConditions.elementToBeClickable(findMyCoffeeButton));
-        Actions actions = new Actions(getDriver());
-        actions.moveToElement(findMyCoffeeButton).click().perform();
+        findMyCoffeeButton.click();
+        getWait().until(ExpectedConditions.visibilityOfElementLocated(By.id("back-top")));
     }
 
 }
