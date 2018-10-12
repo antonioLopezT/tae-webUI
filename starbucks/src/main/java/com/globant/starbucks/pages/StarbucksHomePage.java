@@ -43,12 +43,9 @@ public class StarbucksHomePage extends BasePage {
 
     public CoffeeFinderPage goToCoffeFinder () {
         Actions action = new Actions(getDriver());
-        action.moveToElement(coffeeMenu).perform();
-        waitVisibility(perfectCoffeeLink);
-        action.moveToElement(perfectCoffeeLink);
+        action.moveToElement(coffeeMenu).build().perform();
         waitClickable(perfectCoffeeLink);
-        action.click();
-        action.perform();
+        perfectCoffeeLink.click();
         return new CoffeeFinderPage(getDriver());
     }
 
