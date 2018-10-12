@@ -14,7 +14,7 @@ import com.globant.starbucks.pages.StarbucksHomePage;
 
 public class StarbucksTest extends BaseTest {
 
-    @Test (priority = 1, enabled = false)
+    @Test (priority = 1)
     public void testMenuOptions () {
         StarbucksHomePage homePage = new StarbucksHomePage(driver.getDriver());
         List<String> options = homePage.getMenuOptions();
@@ -22,7 +22,7 @@ public class StarbucksTest extends BaseTest {
         Assert.assertEquals(options, properties);
     }
 
-    @Test (priority = 2, dataProvider = "coffeeProvider", enabled = false)
+    @Test (priority = 2, dataProvider = "coffeeProvider")
     public void testPerfectCoffee (Integer coffee) {
         StarbucksHomePage homePage = new StarbucksHomePage(driver.getDriver());
         CoffeeFinderPage coffeeFinderPage = homePage.goToCoffeFinder();
