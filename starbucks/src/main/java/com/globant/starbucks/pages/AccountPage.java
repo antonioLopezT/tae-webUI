@@ -3,7 +3,6 @@ package com.globant.starbucks.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.globant.starbucks.common.Commons;
 
@@ -20,9 +19,9 @@ public class AccountPage extends BasePage {
     }
 
     public CardPage selectGift () {
-        getWait().until(ExpectedConditions.elementToBeClickable(giftLink));
+        waitClickable(giftLink);
         Commons.click(getDriver(), giftLink);
-        getWait().until(ExpectedConditions.elementToBeClickable(cardLink));
+        waitClickable(cardLink);
         Commons.click(getDriver(), cardLink);
         return new CardPage(getDriver());
     }

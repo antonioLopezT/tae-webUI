@@ -7,13 +7,16 @@ import org.openqa.selenium.interactions.Actions;
 public class Commons {
 
     public static final String BUTTON_TAG = "button";
+    private static Actions action;
 
     private Commons () {
 
     }
 
     public static void click (WebDriver driver, WebElement element) {
-        Actions action = new Actions(driver);
+        if (action == null) {
+            action = new Actions(driver);
+        }
         action.moveToElement(element).click().build().perform();
     }
 }

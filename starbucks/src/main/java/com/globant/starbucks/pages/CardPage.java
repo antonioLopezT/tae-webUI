@@ -53,7 +53,7 @@ public class CardPage extends BasePage {
     }
 
     public String getTextSendGift () {
-        getWait().until(ExpectedConditions.elementToBeClickable(sendGiftButton));
+        waitClickable(sendGiftButton);
         return sendGiftButton.getText();
     }
 
@@ -63,7 +63,7 @@ public class CardPage extends BasePage {
     }
 
     public String getTextContinue () {
-        getWait().until(ExpectedConditions.elementToBeClickable(continueButton));
+        waitClickable(continueButton);
         return continueButton.getText();
     }
 }

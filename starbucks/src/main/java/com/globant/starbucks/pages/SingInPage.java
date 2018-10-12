@@ -3,7 +3,6 @@ package com.globant.starbucks.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.globant.starbucks.common.Commons;
 
@@ -23,13 +22,13 @@ public class SingInPage extends BasePage {
     }
 
     public AccountPage singIn (String username, String password) {
-        getWait().until(ExpectedConditions.visibilityOf(usernameInput));
+        waitVisibility(usernameInput);
         usernameInput.clear();
         usernameInput.sendKeys(username);
-        getWait().until(ExpectedConditions.visibilityOf(passwordInput));
+        waitVisibility(passwordInput);
         passwordInput.clear();
         passwordInput.sendKeys(password);
-        getWait().until(ExpectedConditions.elementToBeClickable(singInButton));
+        waitClickable(singInButton);
         Commons.click(getDriver(), singInButton);
         return new AccountPage(getDriver());
     }

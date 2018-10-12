@@ -7,8 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.collections.CollectionUtils;
+
+import com.globant.starbucks.common.Commons;
 
 public class StarbucksHomePage extends BasePage {
 
@@ -43,17 +44,17 @@ public class StarbucksHomePage extends BasePage {
     public CoffeeFinderPage goToCoffeFinder () {
         Actions action = new Actions(getDriver());
         action.moveToElement(coffeeMenu).perform();
-        getWait().until(ExpectedConditions.visibilityOf(perfectCoffeeLink));
+        waitVisibility(perfectCoffeeLink);
         action.moveToElement(perfectCoffeeLink);
-        getWait().until(ExpectedConditions.elementToBeClickable(perfectCoffeeLink));
+        waitClickable(perfectCoffeeLink);
         action.click();
         action.perform();
         return new CoffeeFinderPage(getDriver());
     }
 
     public SingInPage goToSingIn () {
-        getWait().until(ExpectedConditions.elementToBeClickable(singInLink));
-        singInLink.click();
+        waitClickable(singInLink);
+        Commons.click(getDriver(), singInLink);
         return new SingInPage(getDriver());
     }
 
