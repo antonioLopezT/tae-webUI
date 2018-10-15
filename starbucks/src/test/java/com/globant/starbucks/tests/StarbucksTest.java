@@ -12,8 +12,20 @@ import com.globant.starbucks.pages.CoffeeFinderPage;
 import com.globant.starbucks.pages.SingInPage;
 import com.globant.starbucks.pages.StarbucksHomePage;
 
+/**
+ * This class represents the test that are going to be executed against the
+ * Starbucks page.
+ *
+ * @author joseantonio.lopez
+ */
 public class StarbucksTest extends BaseTest {
 
+    /**
+     * Test that validate the options in the main menu of the Starbucks home page
+     * against a list in a properties file
+     *
+     * @author joseantonio.lopez
+     */
     @Test (priority = 1)
     public void testMenuOptions () {
         StarbucksHomePage homePage = new StarbucksHomePage(driver.getDriver());
@@ -22,6 +34,14 @@ public class StarbucksTest extends BaseTest {
         Assert.assertEquals(options, properties);
     }
 
+    /**
+     * Test that select all the answers of all the questions in the coffee finder
+     * page and validate that the button is visible and the current url once the
+     * button is clicked is correct.
+     *
+     * @param coffee Parameter obtain by a {@link DataProvider}
+     * @author joseantonio.lopez
+     */
     @Test (priority = 2, dataProvider = "coffeeProvider")
     public void testPerfectCoffee (Integer coffee) {
         StarbucksHomePage homePage = new StarbucksHomePage(driver.getDriver());
@@ -32,6 +52,12 @@ public class StarbucksTest extends BaseTest {
         Assert.assertEquals(coffeeFinderPage.getCurrentUrl(), getPropertie("starbucks.url.finder"));
     }
 
+    /**
+     * Test that login in the starbucks page, select a gift card, fill the form for
+     * the gift card and validate that the correct buttons are visible.
+     *
+     * @author joseantonio.lopez
+     */
     @Test (priority = 3)
     public void testGiftCard () {
         StarbucksHomePage homePage = new StarbucksHomePage(driver.getDriver());
@@ -46,6 +72,12 @@ public class StarbucksTest extends BaseTest {
         Assert.assertEquals(cardPage.getTextContinue(), getPropertie("starbucks.continue"));
     }
 
+    /**
+     * Data provider.
+     *
+     * @return All the data for the test.
+     * @author joseantonio.lopez
+     */
     @DataProvider (name = "coffeeProvider")
     public static Object[][] coffeeProvider () {
         return new Object[][] { { 0 }, { 1 }, { 2 } };
