@@ -3,6 +3,8 @@ package com.globant.rest.endpoints;
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 
+import java.util.Map;
+
 import org.apache.commons.httpclient.HttpStatus;
 
 import com.globant.rest.commons.Commons;
@@ -81,14 +83,13 @@ public class JsonPlaceholder {
      * Get JSON from resource sending parameters.
      *
      * @param resource The resource of the endpoint.
-     * @param param    Key parameter.
-     * @param value    Value parameter.
+     * @param params   <code>Map</code> with the parameters.
      * @return A <code>String</code> as JSON.
      * @author joseantonio.lopez
      */
-    public String getJsonFromResourceWithParams (String resource, String param, Object value) {
-        return given().param(param, value).when().get(getUrl(resource)).then().statusCode(HttpStatus.SC_OK).extract()
-                .body().asString();
+    public String getJsonFromResourceWithParams (String resource, Map<String, Object> params) {
+        return given().params(params).when().get(getUrl(resource)).then().statusCode(HttpStatus.SC_OK).extract().body()
+                .asString();
     }
 
     /**

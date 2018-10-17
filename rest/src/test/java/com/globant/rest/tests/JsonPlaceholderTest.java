@@ -4,7 +4,9 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.log4j.Logger;
@@ -166,8 +168,11 @@ public class JsonPlaceholderTest {
      */
     @Test (priority = 6, enabled = true)
     public void testCommentsParameter () {
-        LOGGER.info(
-                endpoint.getJsonFromResourceWithParams(Commons.getPropertie("jsonplaceholder.comments"), "postId", 1));
+        Map<String, Object> params = new HashMap<>();
+        params.put("postId", 1);
+        String json = endpoint.getJsonFromResourceWithParams(Commons.getPropertie("jsonplaceholder.comments"), params);
+        Assert.assertNotNull(json);
+        LOGGER.info(json);
     }
 
     /**
@@ -177,7 +182,11 @@ public class JsonPlaceholderTest {
      */
     @Test (priority = 7, enabled = true)
     public void testPostsParameter () {
-        LOGGER.info(endpoint.getJsonFromResourceWithParams(Commons.getPropertie("jsonplaceholder.posts"), "userId", 1));
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId", 1);
+        String json = endpoint.getJsonFromResourceWithParams(Commons.getPropertie("jsonplaceholder.posts"), params);
+        Assert.assertNotNull(json);
+        LOGGER.info(json);
     }
 
     /**
