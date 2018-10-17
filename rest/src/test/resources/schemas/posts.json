@@ -17,41 +17,19 @@
     "properties": {
       "userId": {
         "$id": "#/items/properties/userId",
-        "type": "integer",
-        "title": "The Userid Schema",
-        "default": 0,
-        "examples": [
-          1
-        ]
+        "type": "integer"
       },
       "id": {
         "$id": "#/items/properties/id",
-        "type": "integer",
-        "title": "The Id Schema",
-        "default": 0,
-        "examples": [
-          1
-        ]
+        "type": "integer"
       },
       "title": {
         "$id": "#/items/properties/title",
-        "type": "string",
-        "title": "The Title Schema",
-        "default": "",
-        "examples": [
-          "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
-        ],
-        "pattern": "^(.*)$"
+        "type": "string"
       },
       "body": {
         "$id": "#/items/properties/body",
-        "type": "string",
-        "title": "The Body Schema",
-        "default": "",
-        "examples": [
-          "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-        ],
-        "pattern": "^(.*)$"
+        "type": "string"
       }
     }
   }
