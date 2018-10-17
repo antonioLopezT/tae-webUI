@@ -3,7 +3,7 @@
 <suite name="RestAssured suite">
 	<test name="RestAssured test">
 		<classes>
-			<class name="com.globant.rest.tests.StatusTest"/>
+			<class name="com.globant.rest.tests.JsonPlaceholderTest"/>
 		</classes>
 	</test>
 </suite>

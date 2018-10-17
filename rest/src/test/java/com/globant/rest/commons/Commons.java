@@ -1,20 +1,29 @@
-package com.globant.rest.tests;
+package com.globant.rest.commons;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- * This class represents the base test for all the tests in the framework.
+ * This class represents commons utilities for the testing framework.
  *
  * @author joseantonio.lopez
  */
-public class BaseTest {
+public class Commons {
 
     /**
      * Resource to get information of the properties file.
      */
-    private ResourceBundle resource = ResourceBundle.getBundle("resources");
+    private static final ResourceBundle RESOURCE = ResourceBundle.getBundle("resources");
+
+    /**
+     * Private constructor.
+     *
+     * @author joseantonio.lopez
+     */
+    private Commons () {
+
+    }
 
     /**
      * Get a single propertie.
@@ -23,8 +32,8 @@ public class BaseTest {
      * @return A <code>String</code> with the value of the propertie.
      * @author joseantonio.lopez
      */
-    public String getPropertie (String key) {
-        return resource.getString(key);
+    public static String getPropertie (String key) {
+        return RESOURCE.getString(key);
     }
 
     /**
@@ -35,8 +44,8 @@ public class BaseTest {
      *         propertie.
      * @author joseantonio.lopez
      */
-    public List<String> getProperties (String key) {
-        String[] arr = resource.getString(key).split(",");
+    public static List<String> getProperties (String key) {
+        String[] arr = RESOURCE.getString(key).split(",");
         return Arrays.asList(arr);
     }
 
