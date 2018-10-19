@@ -3,6 +3,8 @@ package com.globant.rest.endpoints;
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.Map;
 
 import org.apache.commons.httpclient.HttpStatus;
@@ -23,6 +25,16 @@ public class JsonPlaceholder {
      * JSONPlaceholder endpoint "https://jsonplaceholder.typicode.com"
      */
     private final String endpointUrl;
+
+    /**
+     * Constant that identify the schemas folder.
+     */
+    private static final String SCHEMA_FOLDER = "schemas";
+
+    /**
+     * Constant that identify the extension of the schema file.
+     */
+    private static final String SCHEMA_EXTENSION = ".json";
 
     /**
      * Constructor for initialize values.
@@ -113,6 +125,20 @@ public class JsonPlaceholder {
         StringBuilder url = new StringBuilder();
         url.append(endpointUrl).append("/").append(resource);
         return url.toString();
+    }
+
+    /**
+     * Method that get the schema file as Stream.
+     *
+     * @param resource The resource of the endpoint.
+     * @return An <code>InputStream</code> of the schema file.
+     * @author joseantonio.lopez
+     */
+    public InputStream getSchemaFile (String resource) {
+        StringBuilder file = new StringBuilder();
+        file.append(SCHEMA_FOLDER).append(File.separator);
+        file.append(resource).append(SCHEMA_EXTENSION);
+        return this.getClass().getClassLoader().getResourceAsStream(file.toString());
     }
 
 }

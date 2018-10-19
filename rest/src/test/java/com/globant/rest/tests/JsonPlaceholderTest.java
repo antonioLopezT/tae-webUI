@@ -2,8 +2,6 @@ package com.globant.rest.tests;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 
-import java.io.File;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,16 +30,6 @@ public class JsonPlaceholderTest {
      * Element for logging.
      */
     private static final Logger LOGGER = Logger.getLogger(JsonPlaceholderTest.class);
-
-    /**
-     * Constant that identify the schemas folder.
-     */
-    private static final String SCHEMA_FOLDER = "schemas";
-
-    /**
-     * Constant that identify the extension of the schema file.
-     */
-    private static final String SCHEMA_EXTENSION = ".json";
 
     /**
      * Json placeholder endpoint.
@@ -81,7 +69,7 @@ public class JsonPlaceholderTest {
     public void testResourceSchema (String resource) {
         Response response = endpoint.getResponseResource(resource);
         try {
-            response.then().assertThat().body(matchesJsonSchema(getSchemaFile(resource)));
+            response.then().assertThat().body(matchesJsonSchema(endpoint.getSchemaFile(resource)));
             LOGGER.info("Resource: " + resource + " Schema match: " + Boolean.TRUE);
         } catch (AssertionError e) {
             LOGGER.info("Resource: " + resource + " Schema match: " + Boolean.FALSE);
@@ -187,20 +175,6 @@ public class JsonPlaceholderTest {
         String json = endpoint.getJsonFromResourceWithParams(Commons.getPropertie("jsonplaceholder.posts"), params);
         Assert.assertNotNull(json);
         LOGGER.info(json);
-    }
-
-    /**
-     * Method that get the schema file as Stream.
-     *
-     * @param resource The resource of the endpoint.
-     * @return An <code>InputStream</code> of the schema file.
-     * @author joseantonio.lopez
-     */
-    private InputStream getSchemaFile (String resource) {
-        StringBuilder file = new StringBuilder();
-        file.append(SCHEMA_FOLDER).append(File.separator);
-        file.append(resource).append(SCHEMA_EXTENSION);
-        return this.getClass().getClassLoader().getResourceAsStream(file.toString());
     }
 
     /**

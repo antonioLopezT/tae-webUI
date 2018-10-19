@@ -49,9 +49,10 @@ public class GreyTest {
     @Test (priority = 1, enabled = true)
     public void testHeader () {
         Map<String, Object> params = new HashMap<>();
-        params.put("userId", 1);
+        params.put("u", "qa");
+        params.put("q", "publish_6847");
         Map<String, Object> headers = new HashMap<>();
-        params.put("Authorization", HEADER_VALUE);
+        headers.put("Authorization", HEADER_VALUE);
         String json = endpoint.getJsonFromResourceWithParams(params, headers);
         Assert.assertNotNull(json);
         LOGGER.info(json);

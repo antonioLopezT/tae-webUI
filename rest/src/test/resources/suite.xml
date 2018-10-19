@@ -1,9 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="RestAssured suite">
+<suite name="Back end suite">
 	<test name="RestAssured test">
 		<classes>
 			<class name="com.globant.rest.tests.JsonPlaceholderTest"/>
+		</classes>
+	</test>
+	<test name="Grey tests">
+		<classes>
 			<class name="com.globant.rest.tests.GreyTest"/>
 		</classes>
 	</test>
