@@ -1,0 +1,90 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.globant</groupId>
+  <artifactId>mobile</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>mobile</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <maven.compiler.version>3.8.0</maven.compiler.version>
+    <selenium.version>2.46.0</selenium.version>
+    <testng.version>6.8</testng.version>
+    <log4j.version>1.2.17</log4j.version>
+    <surefire.version>2.18.1</surefire.version>
+    <appium.version>3.0.0</appium.version>
+  </properties>
+
+  <dependencies>
+    <!-- SELENUIM -->
+    <dependency>
+    	<groupId>org.seleniumhq.selenium</groupId>
+    	<artifactId>selenium-java</artifactId>
+    	<version>${selenium.version}</version>
+    </dependency>
+    
+    <!-- APPIUM -->
+    <dependency>
+	    <groupId>io.appium</groupId>
+	    <artifactId>java-client</artifactId>
+	    <version>${appium.version}</version>
+	</dependency>
+	
+	<!-- TESTNG -->
+    <dependency>
+    	<groupId>org.testng</groupId>
+    	<artifactId>testng</artifactId>
+    	<version>${testng.version}</version>
+    </dependency>
+    
+    <!-- LOG4J -->
+    <dependency>
+	    <groupId>log4j</groupId>
+	    <artifactId>log4j</artifactId>
+	    <version>${log4j.version}</version>
+	</dependency>
+  </dependencies>
+  
+  <build>
+  	<plugins>
+    	<plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-compiler-plugin</artifactId>
+	        <version>${maven.compiler.version}</version>
+	        <configuration>
+	          <source>${java.version}</source>
+	          <target>${java.version}</target>
+	        </configuration>
+      	</plugin>
+	</plugins>
+  </build>
+  
+  <profiles>
+	<profile>
+		<id>mobile</id>
+		<activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+		<build>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${surefire.version}</version>
+					<configuration>
+						<suiteXmlFiles>
+							<suiteXmlFile>src/test/resources/suite.xml</suiteXmlFile>
+						</suiteXmlFiles>
+					</configuration>
+				</plugin>
+			</plugins>
+		</build>
+	</profile>
+  </profiles>
+</project>
