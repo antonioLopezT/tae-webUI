@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="IMDB suite">
+	<test name="Home test">
+		<classes>
+			<class name="com.globant.imdb.tests.HomeTest"/>
+		</classes>
+	</test>
+	<test name="Celebrity born today test">
+		<classes>
+			<class name="com.globant.imdb.tests.CelebBornTodayTest"/>
+		</classes>
+	</test>
+</suite>
