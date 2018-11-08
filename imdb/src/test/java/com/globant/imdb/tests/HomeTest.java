@@ -91,7 +91,7 @@ public class HomeTest extends BaseTest {
         LOGGER.info("Titles of the opening of this week: " + textTitles);
 
         Assert.assertNotNull(textTitles);
-        Assert.assertEquals(textTitles, Commons.getPropertiesAsList("opening.week.options"));
+        textTitles.forEach(title -> Assert.assertTrue(textTitles.contains(title)));
     }
 
     /**

@@ -13,7 +13,7 @@ Run instructions:
 
 	**Notes: 
 	The project is configure to run in a Mac or a Windows computer. 
-	The commands in the instruction number 3 run the default configuration that open a Firefox browser, you can run the automation test with Firefox or Chrome with the next commands:
+	The commands in the instruction number 3 run the default configuration that open a Chrome browser, you can run the automation test with Firefox or Chrome with the next commands:
 		- For Firefox -> mvn test -PFirefox
 		- For Chrome -> mvn test -PChrome
 	For the test data in the differents test cases you can modify them in the resource.properties 
